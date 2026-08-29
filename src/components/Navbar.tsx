@@ -32,7 +32,7 @@ export function Navbar() {
           href="#"
           className="font-display font-semibold text-base tracking-tight text-[#f5f5f5] hover:text-white transition-colors"
         >
-          AP<span className="text-[#737373]">.</span>
+          Atharva<span className="text-[#737373]">.</span>
         </a>
 
         {/* Desktop */}
