@@ -107,51 +107,28 @@ function ProjectModal({
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div className="relative z-10 w-full max-w-2xl bg-[#111111] border border-[#262626] rounded-2xl overflow-hidden shadow-2xl">
-        {/* Image */}
-        <div className="relative h-52 overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent" />
-
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#0a0a0a]/80 border border-[#262626] flex items-center justify-center text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors"
-            aria-label="Close"
-          >
-            <X size={15} />
-          </button>
-
-          {/* Number */}
-          <span className="absolute top-4 left-4 text-xs font-mono text-[#404040]">
-            {project.number}
-          </span>
-        </div>
-
-        {/* Content */}
-        <div className="p-8">
-          <h3 className="font-display text-2xl font-semibold text-[#f5f5f5] mb-3">
-            {project.title}
-          </h3>
-          <p className="text-sm text-[#a3a3a3] leading-relaxed mb-6">
-            {project.description}
-          </p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-xs px-2.5 py-1 rounded-full border border-[#262626] text-[#737373]"
-              >
-                {tag}
-              </span>
-            ))}
+      {/* Modal — same width & grid as cards */}
+      <div className="relative z-10 w-full max-w-6xl bg-[#111111] border border-[#262626] rounded-2xl overflow-hidden shadow-2xl grid lg:grid-cols-[1fr_360px]">
+        {/* Left — content */}
+        <div className="p-8 flex flex-col justify-between">
+          <div>
+            <p className="text-xs text-[#404040] font-mono mb-4">{project.number}</p>
+            <h3 className="font-display text-xl font-semibold text-[#f5f5f5] mb-3">
+              {project.title}
+            </h3>
+            <p className="text-sm text-[#a3a3a3] leading-relaxed mb-6 max-w-md">
+              {project.description}
+            </p>
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs px-2.5 py-1 rounded-full border border-[#262626] text-[#737373]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Actions */}
@@ -165,8 +142,6 @@ function ProjectModal({
               <Github size={15} />
               View on GitHub
             </a>
-
-            {/* Fork me on GitHub */}
             <a
               href={`${project.github}/fork`}
               target="_blank"
@@ -177,6 +152,25 @@ function ProjectModal({
               Fork me on GitHub
             </a>
           </div>
+        </div>
+
+        {/* Right — image */}
+        <div className="relative overflow-hidden h-48 lg:h-auto">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-transparent to-transparent lg:block hidden" />
+
+          {/* Close button */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#0a0a0a]/80 border border-[#262626] flex items-center justify-center text-[#a3a3a3] hover:text-[#f5f5f5] transition-colors"
+            aria-label="Close"
+          >
+            <X size={15} />
+          </button>
         </div>
       </div>
     </div>
