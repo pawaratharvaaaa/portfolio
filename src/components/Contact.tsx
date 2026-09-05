@@ -1,4 +1,4 @@
-import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 export function Contact() {
   const WHATSAPP_NUMBER = "918850061997"; // country code + number, no +
